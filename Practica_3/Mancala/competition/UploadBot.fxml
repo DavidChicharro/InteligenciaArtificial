@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="250.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="competition.UploadBotController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <Label layoutX="14.0" layoutY="14.0" text="Fichero de cabecera (.h):" />
+    <TextField fx:id="hTxt" editable="false" layoutX="14.0" layoutY="30.0" prefWidth="572.0" />
+    <Button fx:id="seleccionarHBtn" layoutX="14.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleSeleccionarH" prefWidth="115.0" text="Seleccionar" />
+    <Label layoutX="14.0" layoutY="100.0" text="Fichero de implementación (.cpp):" />
+    <TextField fx:id="cppTxt" editable="false" layoutX="14.0" layoutY="116.0" prefWidth="572.0" />
+    <Button fx:id="seleccionarCppBtn" layoutX="14.0" layoutY="151.0" mnemonicParsing="false" onAction="#handleSeleccionarCpp" prefWidth="115.0" text="Seleccionar" />
+    <Button layoutX="483.0" layoutY="216.0" mnemonicParsing="false" onAction="#handleExit" prefWidth="103.0" text="Cancelar" />
+    <Button layoutX="371.0" layoutY="216.0" mnemonicParsing="false" onAction="#handleOk" prefWidth="103.0" text="Ok" />
+    <Label layoutX="14.0" layoutY="183.0" prefWidth="572.0" text="Seleccione los ficheros de cabecera (.h) y de implementación (.cpp) del bot y pulse ok." />
+  </children>
+</AnchorPane>

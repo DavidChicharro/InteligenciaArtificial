@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="competition.ChatRoomWindowController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <Label layoutX="14.0" layoutY="14.0" text="Bots online:" />
+    <ListView fx:id="botLst" layoutX="14.0" layoutY="31.0" onMouseClicked="#handleSelectTo" prefHeight="456.0" prefWidth="200.0" />
+    <Button layoutX="720.0" layoutY="466.0" mnemonicParsing="false" onAction="#handleExit" prefWidth="66.0" text="Salir" />
+    <TextArea fx:id="conversacionTxt" editable="false" layoutX="226.0" layoutY="30.0" prefHeight="322.0" prefWidth="560.0" wrapText="true" />
+    <Button fx:id="retarBtn" layoutX="226.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleRetar" prefWidth="97.0" text="Retar" />
+    <Button fx:id="aceptarRetoBtn" layoutX="334.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleAceptarReto" prefWidth="137.0" text="Aceptar reto" />
+    <Label layoutX="226.0" layoutY="396.0" text="Escribe tu texto aquí:" />
+    <TextField fx:id="msgTxt" layoutX="226.0" layoutY="420.0" onAction="#handleSendMessage" prefWidth="560.0" />
+  </children>
+</AnchorPane>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="240.0" prefWidth="350.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="competition.RegisterWindowController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <Label layoutX="14.0" layoutY="14.0" text="Nombre:" />
+    <Label layoutX="14.0" layoutY="42.0" text="Apellidos:" />
+    <Label layoutX="14.0" layoutY="73.0" text="e-Mail:" />
+    <Label layoutX="14.0" layoutY="102.0" text="Nombre del bot:" />
+    <Label layoutX="14.0" layoutY="137.0" text="Grupo de prácticas:" />
+    <Label layoutX="14.0" layoutY="170.0" text="Clave de acceso:" />
+    <PasswordField fx:id="pwdTxt" layoutX="134.0" layoutY="167.0" prefWidth="200.0" />
+    <TextField fx:id="botnameTxt" layoutX="134.0" layoutY="99.0" prefWidth="200.0" />
+    <TextField fx:id="emailTxt" layoutX="67.0" layoutY="70.0" prefWidth="267.0" />
+    <TextField fx:id="apellidosTxt" layoutX="85.0" layoutY="39.0" prefWidth="249.0" />
+    <TextField fx:id="nombreTxt" layoutX="85.0" layoutY="11.0" prefWidth="249.0" />
+    <ChoiceBox fx:id="grupoCho" layoutX="157.0" layoutY="135.0" prefWidth="177.0">
+      <items>
+        <FXCollections fx:factory="observableArrayList">
+          <String fx:value="Item 1" />
+          <String fx:value="Item 2" />
+          <String fx:value="Item 3" />
+        </FXCollections>
+      </items>
+    </ChoiceBox>
+    <Button fx:id="cancelarBtn" layoutX="228.0" layoutY="203.0" mnemonicParsing="false" onAction="#handleExit" prefWidth="106.0" text="Cancelar" />
+    <Button fx:id="aceptarBtn" layoutX="104.0" layoutY="204.0" mnemonicParsing="false" onAction="#handleOk" prefWidth="106.0" text="Aceptar" />
+  </children>
+</AnchorPane>

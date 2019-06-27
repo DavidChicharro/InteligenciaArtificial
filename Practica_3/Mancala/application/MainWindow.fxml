@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.MainWindowController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <Pane fx:id="gamePan" layoutX="185.0" layoutY="368.0" prefHeight="220.0" prefWidth="600.0" style="background:0" />
+    <TitledPane animated="false" layoutX="14.0" layoutY="13.0" minWidth="373.0" prefWidth="373.0" text="Jugador 1">
+      <content>
+        <AnchorPane id="Content1" minHeight="0.0" minWidth="0.0" prefHeight="201.0" prefWidth="395.0">
+          <children>
+            <TextField id="" fx:id="botLocalJ1Txt" editable="false" layoutX="104.0" layoutY="12.0" prefWidth="253.0" />
+            <Button id="" fx:id="seleccionarJ1Btn" layoutX="104.0" layoutY="41.0" mnemonicParsing="false" onAction="#handleSeleccionarJ1" text="Seleccionar" />
+            <RadioButton id="" fx:id="botJ1Rdo" layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleBotJ1Selection" selected="true" text="Bot local">
+              <toggleGroup>
+                <ToggleGroup fx:id="rdoGroupJ1" />
+              </toggleGroup>
+            </RadioButton>
+            <RadioButton id="" fx:id="humanoJ1Rdo" layoutX="14.0" layoutY="81.0" mnemonicParsing="false" onAction="#handleHumanJ1Selection" text="Jugador humano local" toggleGroup="$rdoGroupJ1" />
+            <Label layoutX="28.0" layoutY="105.0" text="Nombre del jugador:" />
+            <TextField id="" fx:id="humanoLocalJ1Txt" editable="false" layoutX="177.0" layoutY="102.0" prefWidth="180.0" />
+            <RadioButton id="" fx:id="remotoJ1Rdo" layoutX="14.0" layoutY="137.0" mnemonicParsing="false" onAction="#handleRemoteJ1Selection" selected="false" text="Jugador remoto" toggleGroup="$rdoGroupJ1" />
+            <Label layoutX="28.0" layoutY="156.0" text="Nombre del bot:" />
+            <TextField id="" fx:id="botRemotoJ1Txt" editable="false" layoutX="149.0" layoutY="153.0" prefWidth="208.0" />
+          </children>
+        </AnchorPane>
+      </content>
+    </TitledPane>
+    <TitledPane animated="false" layoutX="414.0" layoutY="14.0" minWidth="373.0" prefWidth="373.0" text="Jugador 2">
+      <content>
+        <AnchorPane id="Content1" minHeight="0.0" minWidth="0.0" prefHeight="201.0" prefWidth="395.0">
+          <children>
+            <TextField id="" fx:id="botLocalJ2Txt" editable="false" layoutX="104.0" layoutY="12.0" prefWidth="253.0" />
+            <Button id="" fx:id="seleccionarJ2Btn" layoutX="104.0" layoutY="41.0" mnemonicParsing="false" onAction="#handleSeleccionarJ2" text="Seleccionar" />
+            <RadioButton id="" fx:id="botJ2Rdo" layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleBotJ2Selection" selected="true" text="Bot local">
+              <toggleGroup>
+                <ToggleGroup fx:id="rdoGroupJ2" />
+              </toggleGroup>
+            </RadioButton>
+            <RadioButton id="" fx:id="humanoJ2Rdo" layoutX="14.0" layoutY="81.0" mnemonicParsing="false" onAction="#handleHumanJ2Selection" text="Jugador humano local" toggleGroup="$rdoGroupJ2" />
+            <Label layoutX="28.0" layoutY="105.0" text="Nombre del jugador:" />
+            <TextField id="" fx:id="humanoLocalJ2Txt" editable="false" layoutX="177.0" layoutY="102.0" prefWidth="180.0" />
+            <RadioButton id="" fx:id="remotoJ2Rdo" layoutX="14.0" layoutY="137.0" mnemonicParsing="false" onAction="#handleRemoteJ2Selection" selected="false" text="Jugador remoto" toggleGroup="$rdoGroupJ2" />
+            <Label layoutX="28.0" layoutY="156.0" text="Nombre del bot:" />
+            <TextField id="" fx:id="botRemotoJ2Txt" editable="false" layoutX="149.0" layoutY="153.0" prefWidth="208.0" />
+          </children>
+        </AnchorPane>
+      </content>
+    </TitledPane>
+    <TitledPane animated="false" layoutX="16.0" layoutY="253.0" prefWidth="770.0" text="Partida">
+      <content>
+        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="77.0" prefWidth="766.0">
+          <children>
+            <Label layoutX="14.0" layoutY="15.0" text="Servidor:" />
+            <TextField fx:id="servidorTxt" layoutX="73.0" layoutY="9.0" prefWidth="135.0" />
+            <Label layoutX="217.0" layoutY="14.0" text="Puerto:" />
+            <TextField fx:id="puertoTxt" layoutX="271.0" layoutY="9.0" prefWidth="98.0" />
+            <Button fx:id="crearBtn" layoutX="14.0" layoutY="37.0" mnemonicParsing="false" onAction="#handleStartServer" prefWidth="135.00009999999747" text="Crear partida" />
+            <Button fx:id="unirseBtn" layoutX="157.0" layoutY="37.0" mnemonicParsing="false" onAction="#handleJoinServer" prefWidth="143.0" text="Unirse a partida" />
+            <Label layoutX="393.0" layoutY="15.0" text="Velocidad:" />
+            <Slider fx:id="velocidadBar" layoutX="473.0" layoutY="15.0" prefWidth="285.0" value="50.0" />
+            <TextField fx:id="tiempoTxt" layoutX="591.0" layoutY="37.0" prefWidth="88.0" />
+            <CheckBox fx:id="tiempoChk" layoutX="442.0" layoutY="40.0" mnemonicParsing="false" onAction="#handleTimeLimit" text="Límite de tiempo:" />
+            <Label layoutX="686.0" layoutY="40.0" text="segundos." />
+            <Button fx:id="finalizarBtn" disable="true" layoutX="307.0" layoutY="37.0" mnemonicParsing="false" onAction="#handleAbortGame" prefWidth="106.0" text="Finalizar" />
+          </children>
+        </AnchorPane>
+      </content>
+    </TitledPane>
+    <TitledPane animated="false" layoutX="16.0" layoutY="420.0" text="Liga">
+      <content>
+        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="112.0" prefWidth="150.0">
+          <children>
+            <Button fx:id="oponentesBtn" layoutX="12.0" layoutY="36.0" mnemonicParsing="false" onAction="#handleOponentes" prefWidth="122.0" text="Oponentes" />
+            <Button fx:id="estadisticasBtn" layoutX="12.0" layoutY="78.0" mnemonicParsing="false" onAction="#handleStats" prefWidth="122.0" text="Estadísticas" />
+            <Button fx:id="participarBtn" layoutX="12.0" layoutY="7.0" mnemonicParsing="false" onAction="#handleParticipar" prefWidth="122.0" text="Participar" />
+          </children>
+        </AnchorPane>
+      </content>
+    </TitledPane>
+    <Button layoutX="17.0" layoutY="566.0" mnemonicParsing="false" onAction="#handleExit" prefWidth="154.9998779296875" text="Salir" />
+  </children>
+</AnchorPane>

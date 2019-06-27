@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="170.0" prefWidth="380.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="competition.ParamSelectionWindowController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <CheckBox fx:id="timeChk" layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleTimeLimit" text="Tiempo máximo de turno (segundos):" />
+    <TextField fx:id="timeTxt" layoutX="288.0" layoutY="12.0" prefWidth="77.0" />
+    <Slider fx:id="velocidadBar" layoutX="110.0" layoutY="44.0" prefWidth="255.0" />
+    <Label layoutX="14.0" layoutY="44.0" text="Velocidad:" />
+    <Button layoutX="281.0" layoutY="133.0" mnemonicParsing="false" onAction="#handleExit" text="Cancelar" />
+    <Button layoutX="190.0" layoutY="133.0" mnemonicParsing="false" onAction="#handleOk" prefWidth="80.0" text="Aceptar" />
+    <Label layoutX="14.0" layoutY="66.0" text="Jugador que deseas ser:" />
+    <ChoiceBox fx:id="jugadorCmb" layoutX="190.0" layoutY="64.0" prefWidth="171.0">
+      <items>
+        <FXCollections fx:factory="observableArrayList">
+          <String fx:value="Item 1" />
+          <String fx:value="Item 2" />
+          <String fx:value="Item 3" />
+        </FXCollections>
+      </items>
+    </ChoiceBox>
+    <Label layoutX="14.0" layoutY="99.0" text="Puerto de comunicaciones:" />
+    <TextField fx:id="puertoTxt" layoutX="204.0" layoutY="96.0" prefWidth="157.0" />
+  </children>
+</AnchorPane>

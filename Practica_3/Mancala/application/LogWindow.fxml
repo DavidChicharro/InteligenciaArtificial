@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="220.0" prefWidth="630.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.LogWindowController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <Button layoutX="552.0" layoutY="185.0" mnemonicParsing="false" onAction="#handleHide" text="Cerrar" />
+    <Label layoutX="14.0" layoutY="14.0" text="Simulador:" />
+    <TextArea fx:id="simTxt" editable="false" layoutX="14.0" layoutY="30.0" prefHeight="147.0" prefWidth="602.0" wrapText="true" />
+  </children>
+</AnchorPane>
