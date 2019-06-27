@@ -1,0 +1,258 @@
+<?xml version="1.0"
+	encoding="UTF-8"?>
+<aiml version="2.0">
+	<!-- File: nivel3.aiml -->
+	<!-- Author: David Carrasco Chicharro -->
+
+<category>
+	<pattern>^ [humano persona yo] ^</pattern>
+	<that>Quien quieres que piense la fruta el robot o el humano</that>
+	<template>
+		<think>
+			<set name="topic">nivel3</set>
+			<set name="categorias">
+				<lowercase><readset>categorias</readset></lowercase>
+			</set>
+			<set name="num_categorias">
+				<srai>COUNT <get name="categorias"/></srai>
+			</set>
+			<set name="lista_frutas"><readset>frutas</readset></set>
+			<set name="frutas_restantes">
+				<srai>COUNT <get name="lista_frutas"/></srai>
+			</set>
+			<set name="max">
+				<map><name>successor</name><get name="frutas_restantes"/></map>
+			</set>
+		</think>Ok, piensa en una fruta.<srai>S</srai>
+	</template>
+</category>
+
+
+<topic name="nivel3">
+<category>
+	<pattern>S</pattern>
+	<template>
+		<think>
+			<set name="categ_num">
+				<srai>RANDOM <get name="num_categorias"/></srai> <!-- numero aleatorio entre 1 y num_categorias -->
+			</set>
+			<set name="categoria_select"> <!-- categoria aleatoria -->
+				<srai>SELECTITEM <get name="categ_num" /> IN <get name="categorias"/></srai>
+			</set>
+			<set var="opciones_categ"> <!-- opciones de la categoria elegida aleatoriamente -->
+				<readset><get name="categoria_select"/></readset>
+			</set>
+			<set var="num_opciones"> <!-- numero de opciones en la categoria -->
+				<srai>COUNT <get var="opciones_categ"/></srai>
+			</set>
+			<set name="opcion_categ_selec"> <!-- numero aleatorio entre 1 y num_opciones -->
+				<srai>RANDOM <get var="num_opciones"/></srai>
+			</set>
+			<set name="atributo">  <!-- atributo aleatorio -->
+				<lowercase>
+					<srai>SELECTITEM <get name="opcion_categ_selec"/> IN <get var="opciones_categ"/></srai>
+				</lowercase>
+			</set>			
+		</think>
+		<condition name="frutas_restantes">
+			<li><value>1</value>La fruta en la que piensas es <lowercase><get name="lista_frutas"/></lowercase></li>
+			<li><value>0</value>
+				<random>
+					<li>Me estas engañando</li>
+					<li>Eres un mentiroso</li>
+					<li>Estas mintiendome</li>
+				</random>
+			</li>			
+			<li><srai>CONTINUAR</srai></li>
+		</condition>
+	</template>
+</category>
+
+<category>
+	<pattern>CONTINUAR</pattern>
+	<template>
+		<condition name="atributo">
+			<li><value>a</value>La fruta tiene vitamina a</li>
+			<li><value>b</value>La fruta tiene vitamina b</li>
+			<li><value>c</value>La fruta tiene vitamina c</li>
+			<li>La fruta es <get name="atributo"/></li>
+		</condition>
+	</template>
+</category>
+
+
+<category>
+	<pattern>Si</pattern>
+	<that>^ La fruta (es)(tiene vitamina) *</that>
+	<template>
+		<think>
+			<set name="count">1</set>
+			<set name="fruta_act">
+				<srai>TOP <get name="lista_frutas"/></srai>
+			</set>
+			<set name="atr_fruta_act">
+				<map name="atr_frutas"><get name="fruta_act"/></map>
+			</set>
+			<condition name="count">
+				<li><value><get name="max"/></value></li>
+				<li> 
+					<set var="existe">
+						<srai>FINDITEM <get name="atributo"/> IN <get name="atr_fruta_act"/></srai>
+					</set>
+
+					<condition var="existe">
+						<li value="0">
+							<set name="lista_frutas">
+								<srai>REMOVEITEM <get name="count"/> IN <get name="lista_frutas"/></srai>
+							</set>
+							<set name="frutas_restantes">
+								<map><name>predecessor</name><get name="frutas_restantes"/></map>
+							</set>
+							<set name="max">
+								<map><name>predecessor</name><get name="max"/></map>
+							</set>
+							<set name="count"><map><name>predecessor</name><get name="count"/></map></set>
+						</li>
+					</condition>
+
+					<set name="count">
+						<map><name>successor</name><get name="count"/></map>
+					</set>
+					<set name="fruta_act">
+						<srai>SELECTITEM <get name="count"/> IN <get name="lista_frutas"/></srai>
+					</set>
+					<set name="atr_fruta_act">
+						<map name="atr_frutas"><get name="fruta_act"/></map>
+					</set>
+					<loop/>
+				</li>
+			</condition>
+
+			<set name="categorias">
+				<srai>REMOVEITEM <get name="categ_num"/> IN <get name="categorias"/></srai>
+			</set>
+			<set name="num_categorias">
+				<map><name>predecessor</name><get name="num_categorias"/></map>
+			</set>
+		</think>
+		<srai>S</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>No</pattern>
+	<that>^ La fruta (es)(tiene vitamina) *</that>
+	<template>
+		<think>
+			<set name="count">1</set>
+			<set name="fruta_act">
+				<srai>TOP <get name="lista_frutas"/></srai>
+			</set>
+			<set name="atr_fruta_act">
+				<map name="atr_frutas"><get name="fruta_act"/></map>
+			</set>
+			<condition name="count">
+				<li><value><get name="max"/></value></li>
+				<li> 
+					<set var="existe">
+						<srai>FINDITEM <get name="atributo"/> IN <get name="atr_fruta_act"/></srai>
+					</set>
+					<condition var="existe">
+						<li value="0"></li>
+						<li>
+							<set name="lista_frutas">
+								<srai>REMOVEITEM <get name="count"/> IN <get name="lista_frutas"/></srai>
+							</set>
+							<set name="frutas_restantes">
+								<map><name>predecessor</name><get name="frutas_restantes"/></map>
+							</set>
+							<set name="max">
+								<map><name>predecessor</name><get name="max"/></map>
+							</set>
+							<set name="count"><map><name>predecessor</name><get name="count"/></map></set>
+						</li>
+					</condition>
+
+					<set name="count">
+						<map><name>successor</name><get name="count"/></map>
+					</set>
+					<set name="fruta_act">
+						<srai>SELECTITEM <get name="count"/> IN <get name="lista_frutas"/></srai>
+					</set>
+					<set name="atr_fruta_act">
+						<map name="atr_frutas"><get name="fruta_act"/></map>
+					</set>
+				<loop/>
+				</li>
+			</condition>
+			<condition name="atributo">
+				<li><value>a</value>
+					<set name="categorias">
+						<srai>REMOVEITEM <get name="categ_num"/> IN <get name="categorias"/></srai>
+					</set>
+					<set name="num_categorias">
+						<map><name>predecessor</name><get name="num_categorias"/></map>
+					</set>
+				</li>
+				<li><value>b</value>
+					<set name="categorias">
+						<srai>REMOVEITEM <get name="categ_num"/> IN <get name="categorias"/></srai>
+					</set>
+					<set name="num_categorias">
+						<map><name>predecessor</name><get name="num_categorias"/></map>
+					</set>
+				</li>
+				<li><value>c</value>
+					<set name="categorias">
+						<srai>REMOVEITEM <get name="categ_num"/> IN <get name="categorias"/></srai>
+					</set>
+					<set name="num_categorias">
+						<map><name>predecessor</name><get name="num_categorias"/></map>
+					</set>
+				</li>
+				<li>
+					<removefromset>
+						<name><get name="categoria_select"/></name>
+						<key><get name="atributo"/></key>
+					</removefromset>
+				</li>
+			</condition>
+		</think>
+		<srai>S</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>Si</pattern>
+	<that>La fruta en la que piensas es *</that>
+	<template>Que bien, he acertado. <srai>JUGAR OTRA VEZ</srai></template>
+</category>
+
+<category>
+	<pattern>No</pattern>
+	<that>La fruta en la que piensas es *</that>
+	<template>Me has engañando. <srai>JUGAR OTRA VEZ</srai></template>
+</category>
+</topic>
+
+<category>
+	<pattern>$JUGAR OTRA VEZ</pattern>
+	<template>Quieres jugar otra vez</template>
+</category>
+
+<category>
+	<pattern>Si</pattern>
+	<that>^ Quieres jugar otra vez ^</that>
+	<template>
+		<srai>PREPARAR FRUTAS</srai>
+		<srai>jugar</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>No</pattern>
+	<that>^ Quieres jugar otra vez ^</that>
+	<template>Esta bien, ha sido un placer jugar contigo.</template>
+</category>
+
+</aiml>

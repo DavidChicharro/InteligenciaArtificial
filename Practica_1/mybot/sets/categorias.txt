@@ -1,0 +1,6 @@
+cat_color
+cat_sabor
+cat_tamaño
+vit_a
+vit_b
+vit_c

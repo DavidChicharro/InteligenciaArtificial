@@ -1,0 +1,99 @@
+<?xml version="1.0"
+	encoding="UTF-8"?>
+<aiml version="2.0">
+
+
+<category>
+	<pattern>LIMPIAR SET *</pattern>
+	<template>
+		<think>
+			<set var="nombre_set"><star/></set>
+			<set var="elem_set">
+				<readset><get var="nombre_set"/></readset>
+			</set>
+			<set var="elem">
+				<srai>ITERATE <get var="elem_set"/></srai>
+			</set>
+		<condition var="elem">
+			<li><value>end</value></li>
+			<li>				
+				<removefromset>
+					<name><get var="nombre_set"/></name>
+					<key><get var="elem"/></key>
+				</removefromset>
+				<set var="elem">
+					<srai>NEXT</srai>
+				</set>
+			<loop/>
+			</li>
+		</condition>
+		</think>
+	</template>
+</category>
+
+
+<!-- Rellena todos los set de frutas con sus caracteristicas -->
+<category>
+	<pattern>PREPARAR FRUTAS</pattern>
+	<template>
+		<srai>LIMPIAR SET cat_color</srai>
+		<think>
+			<set var="color">
+				rojo
+				naranja
+				amarillo
+				verde
+				morado
+				marron
+			</set>
+		</think>
+		<addtoset>
+			<name>cat_color</name>
+			<key><get var="color"/></key>
+		</addtoset>
+
+		<srai>LIMPIAR SET cat_sabor</srai>
+		<think>
+			<set var="sabor">
+				acido
+				semiacido
+				neutro
+				dulce
+			</set>
+		</think>
+		<addtoset>
+			<name>cat_sabor</name>
+			<key><get var="sabor"/></key>
+		</addtoset>
+
+		<srai>LIMPIAR SET cat_tamaño</srai>
+		<think>
+			<set var="tam">
+				grande
+				mediano
+				pequeño
+			</set>
+		</think>
+		<addtoset>
+			<name>cat_tamaño</name>
+			<key><get var="tam"/></key>
+		</addtoset>
+
+		<addtoset>
+			<name>vit_a</name>
+			<key>a</key>
+		</addtoset>
+
+		<addtoset>
+			<name>vit_b</name>
+			<key>b</key>
+		</addtoset>
+
+		<addtoset>
+			<name>vit_c</name>
+			<key>c</key>
+		</addtoset>
+	</template>
+</category>
+
+</aiml>

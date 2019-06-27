@@ -1,0 +1,294 @@
+<?xml version="1.0"
+	encoding="UTF-8"?>
+<aiml version="2.0">
+	<!-- File: nivel1.aiml -->
+	<!-- Author: David Carrasco Chicharro -->
+
+<!-- Regla para comparar dos claves -->
+ <category>
+    <pattern>COMPARE * *</pattern>
+    <template>
+        <think><set name="tmp"><star/></set></think>
+            <condition name="tmp">
+                <li><value><star index="2"/></value><set name="comp">true</set></li>
+                <li><set name="comp">false</set></li>
+            </condition>
+    </template>
+</category>
+
+<!-- Regla para empezar a jugar -->
+<category>
+	<pattern>^ jug+ ^</pattern>
+	<template>
+		Quien quieres que piense la fruta el robot o el humano
+	</template>
+</category>
+
+<category>
+	<pattern>^ [+bot tu] ^</pattern>
+	<that>Quien quieres que piense la fruta el robot o el humano</that>
+	<template>
+		<think>
+			<set name="topic">nivel1</set>
+		</think>
+		<srai>Pensar fruta</srai>
+	</template>
+</category>
+
+
+<topic name="nivel1">
+<!-- Regla para que el agente elija una fruta al azar ^ [piensa elige selecciona] * fruta ^-->
+<category>
+	<pattern>Pensar fruta</pattern>
+	<template>
+		<think>		
+			<set var="lista_frutas"><readset>frutas</readset></set>
+			<set var="cantidad_frutas"><srai>COUNT <get var="lista_frutas"/></srai></set>
+			<set var="pos"><srai>RANDOM <get var="cantidad_frutas"/></srai></set>
+			<set name="fruta">
+				<srai>
+					SELECTITEM <get var="pos"/> IN <get var="lista_frutas"/>
+				</srai>
+			</set>
+		</think>
+		Ya he pensado una fruta. Preguntame.
+	</template>
+</category>
+
+
+<!-- Regla para preguntar por el sabor-->
+<category>
+	<pattern>SABOR *</pattern>
+	<template>
+		<think>
+			<set var="sab"><map name="sabor"><get name="fruta"/></map></set>
+			<srai>COMPARE <get var="sab"/> <star/></srai>		
+		</think>
+
+		<condition name="comp">
+			<li><value>false</value>No.</li>
+			<li><value>true</value>Si.</li>
+		</condition>
+	</template>
+</category>
+
+<category>
+	<pattern>^ acid+ ^</pattern>
+	<template><srai>SABOR ACIDO</srai></template>
+</category>
+
+<category>
+	<pattern>^ semiacid+ ^</pattern>
+	<template><srai>SABOR SEMIACIDO</srai></template>
+</category>
+
+<category>
+	<pattern>^ neutr+ ^</pattern>
+	<template><srai>SABOR NEUTRO</srai></template>
+</category>
+
+<category>
+	<pattern>^ dulce ^</pattern>
+	<template><srai>SABOR DULCE</srai></template>
+</category>
+
+
+
+<!-- Regla para preguntar por el tamaño -->
+<category>
+	<pattern>TAMAÑO *</pattern>
+	<template>
+		<think>
+			<set var="tam"><map name="tamaño"><get name="fruta"/></map></set>
+			<srai>COMPARE <get var="tam"/> <star/></srai>
+		</think>
+
+		<condition name="comp">
+			<li><value>false</value>No.</li>
+			<li><value>true</value>Si.</li>
+		</condition>
+	</template>
+</category>
+
+<category>
+	<pattern>^ grande ^</pattern>
+	<template><srai>TAMAÑO GRANDE</srai></template>
+</category>
+
+<category>
+	<pattern>^ median+ ^</pattern>
+	<template><srai>TAMAÑO MEDIANO</srai></template>
+</category>
+
+<category>
+	<pattern>^ pequeñ+ ^</pattern>
+	<template><srai>TAMAÑO PEQUEÑO</srai></template>
+</category>
+
+
+
+<!-- Regla para preguntar por el color -->
+<category>
+	<pattern>COLOR *</pattern>
+	<template>
+		<think>
+			<set var="colores_fruta"><map name="color"><get name="fruta"/></map></set>
+			<set var="existe"><srai>FINDITEM <star/> IN <get var="colores_fruta"/></srai></set>			
+		</think>
+		<condition var="existe">
+			<li value="0">No.</li>
+			<li>Si.</li>
+		</condition>
+	</template>
+</category>
+
+<category>
+	<pattern>^ roj+ ^</pattern>
+	<template><srai>COLOR ROJO</srai></template>
+</category>
+
+<category>
+	<pattern>^ naranja ^</pattern>
+	<template><srai>COLOR NARANJA</srai></template>
+</category>
+
+<category>
+	<pattern>^ amarill+ ^</pattern>
+	<template><srai>COLOR AMARILLO</srai></template>
+</category>
+
+<category>
+	<pattern>^ verde ^</pattern>
+	<template><srai>COLOR VERDE</srai></template>
+</category>
+
+<category>
+	<pattern>^ morad+ ^</pattern>
+	<template><srai>COLOR MORADO</srai></template>
+</category>
+
+<category>
+	<pattern>^ marron ^</pattern>
+	<template><srai>COLOR MARRON</srai></template>
+</category>
+
+
+
+<!-- Regla para preguntar por la Vitamina A -->
+<category>
+	<pattern>^ VITAMINA A ^</pattern>
+	<template>
+		<think>
+			<set var="vit_a"><map name="vitamina_a"><get name="fruta"/></map></set>
+		</think>
+		<condition var="vit_a">
+		    <li value="si">Si.</li>
+		    <li value="no">No.</li>
+		</condition>
+	</template>
+</category>
+
+
+
+<!-- Regla para preguntar por la Vitamina A -->
+<category>
+	<pattern>^ VITAMINA B ^</pattern>
+	<template>
+		<think>
+			<set var="vit_b"><map name="vitamina_b"><get name="fruta"/></map></set>
+		</think>
+		<condition var="vit_b">
+		    <li value="si">Si.</li>
+		    <li value="no">No.</li>
+		</condition>
+	</template>
+</category>
+
+
+
+<!-- Regla para preguntar por la Vitamina A -->
+<category>
+	<pattern>^ VITAMINA C ^</pattern>
+	<template>
+		<think>
+			<set var="vit_c"><map name="vitamina_c"><get name="fruta"/></map></set>
+		</think>
+		<condition var="vit_c">
+		    <li value="si">Si.</li>
+		    <li value="no">No.</li>
+		</condition>
+	</template>
+</category>
+
+
+
+<!-- Regla para adivinar la fruta -->
+<category>
+	<pattern>La fruta es [el la un una] *</pattern>
+	<template>
+		<think>
+			<srai>COMPARE <get name="fruta"/> <star/></srai>
+		</think>
+		<condition name="comp">
+			<li><value>true</value>Has acertado.</li>
+			<li>No has acertado</li>
+		</condition>
+	</template>
+</category>
+
+<category>
+	<pattern>Es [el la un una] <set>frutas</set></pattern>
+	<template>
+		<srai>La fruta es el <star/></srai>
+	</template>
+</category>
+
+<category>
+	<pattern>^ [pensa+ piens+] [en es] [el la un una] <set>frutas</set></pattern>
+	<template>
+		<srai>La fruta es el <star index="2"/></srai>
+	</template>
+</category>
+
+
+
+<!-- Regla para ayudar a saber como es una fruta -->
+<category>
+	<pattern>[el la] * es *</pattern>
+	<template>
+		<think>
+			<set var="atrs_fruta"><map name="caracteristicas"><star/></map></set>
+			<set var="existe">
+				<srai>FINDITEM <star index="2"/> IN <get var="atrs_fruta"/></srai>
+			</set>
+		</think>
+		<condition var="existe">
+			<li value="0">No.</li>
+			<li>Si.</li>
+		</condition>
+	</template>
+</category>
+
+<category>
+	<pattern>Es * [el la] *</pattern>
+	<template>
+		<srai>el <star index="2"/> es <star/></srai>
+	</template>
+</category>
+
+<category>
+	<pattern>[el la] * tiene vitamina *</pattern>
+	<template>
+		<srai>el <star/> es <star index="2"/></srai>
+	</template>
+</category>
+
+<category>
+	<pattern>Tiene vitamina * [el la] *</pattern>
+	<template>
+		<srai>el <star index="2"/> es <star/></srai>
+	</template>
+</category>
+</topic>
+
+</aiml>

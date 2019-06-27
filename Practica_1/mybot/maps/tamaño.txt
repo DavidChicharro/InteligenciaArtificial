@@ -1,0 +1,16 @@
+fresa:pequeño
+manzana:mediano
+naranja:mediano
+kiwi:pequeño
+mandarina:pequeño
+piña:grande
+mango:grande
+melocoton:mediano
+higo:pequeño
+ciruela:pequeño
+pera:mediano
+platano:mediano
+coco:grande
+aguacate:mediano
+nuez:pequeño
+cereza:pequeño
