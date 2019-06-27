@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/david/Uni/IA/Practicas/Practica_2/Practica2/Comportamientos_Jugador/aldeano.cpp
+../Comportamientos_Jugador/aldeano.hpp
+/home/david/Uni/IA/Practicas/Practica_2/Practica2/Comportamientos_Jugador/aldeano.hpp
+motorlib/util.h
+/home/david/Uni/IA/Practicas/Practica_2/Practica2/Comportamientos_Jugador/motorlib/util.h
+
+/home/david/Uni/IA/Practicas/Practica_2/Practica2/Comportamientos_Jugador/aldeano.hpp
+chrono
+-
+time.h
+-
+thread
+-
+comportamientos/comportamiento.hpp
+/home/david/Uni/IA/Practicas/Practica_2/Practica2/Comportamientos_Jugador/comportamientos/comportamiento.hpp
+
+/home/david/Uni/IA/Practicas/Practica_2/Practica2/src/comportamientos/comportamiento.cpp
+comportamientos/comportamiento.hpp
+/home/david/Uni/IA/Practicas/Practica_2/Practica2/src/comportamientos/comportamientos/comportamiento.hpp
+
+include/comportamientos/comportamiento.hpp
+vector
+-
+
+include/motorlib/util.h
+cstdlib
+-
+
