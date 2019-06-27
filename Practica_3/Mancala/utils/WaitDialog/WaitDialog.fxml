@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="100.0" prefWidth="300.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="utils.WaitDialog.WaitDialogController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <Label fx:id="lbl" layoutX="14.0" layoutY="25.0" prefWidth="272.0" text="Label" />
+    <Label layoutX="14.0" layoutY="58.0" prefWidth="175.0" text="Por favor, espere..." />
+  </children>
+</AnchorPane>
